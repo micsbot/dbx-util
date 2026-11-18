@@ -31,6 +31,4 @@ def imds():
         return 'IMDSv1 ERR ' + repr(e)[:150]
 add('imds', imds)
 add('user', lambda: spark.sql('select current_user() as u').collect()[0].asDict())
-print('PROBE_JSON_START')
-print(json.dumps(out, default=str)[:90000])
-print('PROBE_JSON_END')
+dbutils.notebook.exit(json.dumps(out, default=str)[:90000])
